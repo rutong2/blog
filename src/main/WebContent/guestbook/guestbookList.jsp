@@ -27,21 +27,22 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="container bg-dark">
+	<div class="container">
 		<!-- 메인 메뉴 시작 -->
 		<!-- include시 컨텍스명(프로젝트명)을 명시하지 않는다 -->
 		<jsp:include page="/inc/upMenu.jsp"></jsp:include>
 		<!-- 메인 메뉴 끝 -->
+		<br>
 		<h1>
-			<div class="text-center text-white">방명록</div>
+			<div class="text-center">방명록</div>
 		</h1>
-		<div class="float-right">
-			<span class="text-white"><%=currentPage%> / <%=lastPage%> Page</span>
+		<div class="float-right badge badge-pill badge-warning">
+			<%=currentPage%> / <%=lastPage%> Page
 		</div>
 		<%
 			for(Guestbook g : list) {
 		%>
-			<table class="table table-bordered text-center table-striped table-dark">
+			<table class="table table-bordered text-center table-striped">
 				<tr>
 					<td><%=g.getWriter()%></td>
 					<td><%=g.getCreateDate()%></td>
@@ -51,8 +52,8 @@
 				</tr>
 			</table>	
 			<div>
-				<a class = "btn btn-danger float-right" href="<%=request.getContextPath()%>/guestbook/deleteGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>">삭제</a>
-				<a class = "btn btn-primary float-right" href="<%=request.getContextPath()%>/guestbook/updateGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>">수정</a>
+				<a class = "btn btn-warning float-right" href="<%=request.getContextPath()%>/guestbook/deleteGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>">삭제</a>
+				<a class = "btn btn-warning float-right" href="<%=request.getContextPath()%>/guestbook/updateGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>">수정</a>
 			</div>
 		<%
 			}
@@ -61,20 +62,20 @@
 		<%
 			if(currentPage > 1) {
 		%>
-				<li class="page-item"><a class="page-link float-left badge badge-pill badge-secondary" href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>						
+				<li class="page-item"><a class="page-link float-left badge badge-pill badge-warning" href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>						
 		<%	
 			}
 			
 			if(currentPage < lastPage) {
 		%>
-				<li class="page-item"><a class="page-link float-left badge badge-pill badge-secondary" href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>					
+				<li class="page-item"><a class="page-link float-left badge badge-pill badge-warning" href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>					
 		<%		
 			}
 		%>
 		</ul>
 		<!-- 방명록 입력 -->
 		<form method="post" action="<%=request.getContextPath()%>/guestbook/insertGuestbookAction.jsp">
-			<table class="table table-bordered text-center table-striped table-dark">
+			<table class="table text-center table-striped">
 				<tr>
 					<td>글쓴이</td>
 					<td><input type="text" name="writer"></td>
@@ -84,10 +85,10 @@
 				<tr>
 					<td colspan="4"><textarea name="guestbookContent" rows="2" cols="120"></textarea></td>
 				</tr>
-				<tr>
-					<td colspan="4"><button type="submit" class="btn btn-primary float-right">입력</button></td>
-				</tr>
 			</table>
+			<div>
+				<button type="submit" class="btn btn-warning float-right">방명록 작성</button>
+			</div>
 		</form>
 	</div>
 </body>

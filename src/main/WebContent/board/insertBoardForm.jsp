@@ -15,13 +15,14 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container bg-dark">
+	<div class="container">
 		<jsp:include page="/inc/upMenu.jsp"></jsp:include>
-		<div class="text-center bg-dark text-white">
-			<h1>글쓰기</h1>
+		<br>
+		<div class="text-center">
+			<h1>게시판 입력</h1>
 		</div>
 		<form method="post" action="<%=request.getContextPath()%>/board/insertBoardAction.jsp">
-			<table class="table table-dark text-white table-borderless table-striped">
+			<table class="table table-striped">
 				<tr>
 					<td class="text-center">카테고리</td>
 					<td>
@@ -54,12 +55,10 @@
 					<input type="password" name="boardPw" class="form-control">
 					</td>
 				</tr>
-				<tr>
-					<td colspan="2" class="text-center">
-						<button type="submit" class="btn btn-primary">작성</button>
-					</td>
-				</tr>
 			</table>
+			<div>
+				<button type="submit" class="btn btn-warning float-right">작성</button>
+			</div>
 		</form>
 	</div>	
 </body>

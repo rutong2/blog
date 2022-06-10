@@ -15,13 +15,14 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="container bg-dark">
+	<div class="container">
 		<jsp:include page="/inc/upMenu.jsp"></jsp:include>
+		<br>
 		<h1>
-			<div class="text-center text-white">삭제 페이지</div>
+			<div class="text-center">PDF 삭제</div>
 		</h1>
 		<form method="post" action="<%=request.getContextPath()%>/pdf/deletePdfAction.jsp">
-			<table class="table table-borderless text-center table-striped table-dark">
+			<table class="table table-borderless text-center table-striped">
 				<tr>
 					<td>번호</td>
 					<td><input class="text-center" type="text" name="pdfNo" value = "<%=pdfNo%>" readonly="readonly"></td>
@@ -29,7 +30,7 @@
 					<td><input type="password" name="pdfPw" value=""></td>
 				</tr>
 				<tr>
-					<td colspan = "4"><button href="<%=request.getContextPath()%>/pdf/deletePdfAction.jsp?pdfNo=<%=pdfNo%>" class="btn btn-danger float-right">삭제</button></td>
+					<td colspan = "4"><button href="<%=request.getContextPath()%>/pdf/deletePdfAction.jsp?pdfNo=<%=pdfNo%>" class="btn btn-warning float-right">삭제</button></td>
 				</tr>
 			</table>
 		</form>

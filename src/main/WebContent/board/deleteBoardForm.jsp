@@ -10,14 +10,15 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="container bg-dark">
+	<div class="container">
 		<jsp:include page="/inc/upMenu.jsp"></jsp:include>
+		<br>
 		<h1>
-			<div class="text-center bg-dark text-white">삭제 페이지</div>
+			<div class="text-center">게시판 삭제</div>
 		</h1>
 		<br>
 		<form method="post" action="<%=request.getContextPath()%>/board/deleteBoardAction.jsp">
-			<table class="table table-dark text-white table-borderless table-striped">
+			<table class="table table-striped">
 				<tr class="table-sm">
 					<td class="float-right">게시물 번호 : </td>
 					<td><input class="text-center" type="text" name="boardNo" value=<%=boardNo%> readonly="readonly"></td>
@@ -25,7 +26,7 @@
 					<td><input type="password" name="boardPw"></td>
 				</tr>
 				<tr>
-					<td colspan="4"><button type="submit" class="btn btn-danger float-right">삭제</button></td>
+					<td colspan="4"><button type="submit" class="btn btn-warning float-right">삭제</button></td>
 				</tr>
 			</table>
 		</form>

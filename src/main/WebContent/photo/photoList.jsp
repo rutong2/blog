@@ -35,15 +35,16 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="container bg-dark">
+	<div class="container">
 		<jsp:include page="/inc/upMenu.jsp"></jsp:include>
+		<br>
 		<h1>
-			<div class="text-center text-white">사진</div>
+			<div class="text-center">사진</div>
 		</h1>
-		<div class="float-right">
-			<span class="text-white"><%=currentPage%> / <%=lastPage%> Page</span>
+		<div class="float-right badge badge-pill badge-warning">
+			<%=currentPage%> / <%=lastPage%> Page
 		</div>
-		<table class="table table-bordered text-center table-striped table-dark">
+		<table class="table table-bordered text-center table-striped">
 			<tr>
 			<%
 				// td의 갯수가 5의 배수가 되도록
@@ -76,32 +77,28 @@
 				}
 			%>
 			</tr>
-			<tr class="bg-dark table-borderless">
+			<tr class="table-borderless">
 				<td colspan="<%=endIdx%>">
-					<div class="row">
-						<div class="col-sm-6">
-							<ul class="pagination float-right">
-								<%
-									if(currentPage > 1) {
-								%>
-										<li class="page-item float-right"><a class="page-link float-left badge badge-secondary float-right" href="<%=request.getContextPath()%>/photo/photoList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
-								<%
-									}
-									if(currentPage < lastPage) {
-								%>
-										<li class="page-item float-right"><a class="page-link float-left badge badge-secondary float-right" href="<%=request.getContextPath()%>/photo/photoList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
-								<%
-									}
-								%>
-							</ul>
-						</div>
-					<div class="col-sm-6">
-						<a class= "btn btn-primary float-right" href="<%=request.getContextPath()%>/photo/insertPhotoForm.jsp">글작성</a>
-					</div>
-					</div>
+					<ul class="pagination float-right">
+						<%
+							if(currentPage > 1) {
+						%>
+								<li class="page-item float-right"><a class="page-link float-left badge badge-warning float-right" href="<%=request.getContextPath()%>/photo/photoList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
+						<%
+							}
+							if(currentPage < lastPage) {
+						%>
+								<li class="page-item float-right"><a class="page-link float-left badge badge-warning float-right" href="<%=request.getContextPath()%>/photo/photoList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
+						<%
+							}
+						%>
+					</ul>
 				</td>
 			</tr>
 		</table>
+		<div>
+			<a class= "btn btn-warning float-right" href="<%=request.getContextPath()%>/photo/insertPhotoForm.jsp">글작성</a>
+		</div>
 	</div>
 </body>
 </html>

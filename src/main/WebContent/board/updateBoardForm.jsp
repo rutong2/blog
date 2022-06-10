@@ -25,14 +25,15 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="container bg-dark">
+	<div class="container">
 		<jsp:include page="/inc/upMenu.jsp"></jsp:include>
+		<br>
 		<h1>
-			<div class="text-center bg-dark text-white">수정 페이지</div>
+			<div class="text-center">게시판 수정</div>
 		</h1>
 		<br>
 		<form method="post" action="<%=request.getContextPath()%>/board/updateBoardAction.jsp">
-			<table class="table table-borderless table-dark table-striped">
+			<table class="table table-striped">
 				<tr>
 					<td class="text-center">번호</td>
 					<td><input type="text" name="boardNo" value="<%=board.getBoardNo()%>" readonly="readonly"></td>
@@ -73,7 +74,7 @@
 					<td><input type="password" name="boardPw" value=""></td>
 				</tr>
 				<tr>
-					<td colspan="2"><button type="submit" class="btn btn-primary float-right">수정</button></td>
+					<td colspan="2"><button type="submit" class="btn btn-warning float-right">수정</button></td>
 				</tr>
 			</table>
 		</form>

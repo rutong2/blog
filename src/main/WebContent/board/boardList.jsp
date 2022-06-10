@@ -62,13 +62,14 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="container bg-dark">
+	<div class="container">
 		<jsp:include page="/inc/upMenu.jsp"></jsp:include>
-			<div class="text-center text-white">
+			<br>
+			<div class="text-center">
 				<%
 					if(request.getParameter("categoryName") == null) { // 사용자가 아직 카테고리를 선택하지 않았을때
 				%>
-						<h1>게시글 목록(<%=totalRow%>)</h1> 
+						<h1>게시판 <span class="badge badge-pill badge-warning"><%=totalRow%></span></h1> 
 				<%
 					} else { // 사용자가 카테고리를 선택했을때
 				%>
@@ -77,29 +78,32 @@
 					}
 				%>
 			</div>
-		<div class="float-right">
-			<span class="text-white"><%=currentPage%> / <%=lastPage%> Page</span>
+		<div class="float-right badge badge-pill badge-warning">
+			<%=currentPage%> / <%=lastPage%> Page
 		</div>
 		<br>
 		<div class="row">
 	  		<div class="col-sm-2">
-	  			<div>
-					<ul>
-						<%
-							for(HashMap<String, Object> m : categoryList) {
-						%>
-								<li>
-									<h5><a href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=m.get("categoryName")%>" class="badge badge-pill badge-secondary"><%=m.get("categoryName")%>(<%=m.get("cnt")%>)</a></h5>
-								</li>
-						<%		
-							}
-						%>
-					</ul>
-				</div>
+	  			<table class="table table-bordered text-center table-striped">
+	  				<tr class="bg-warning">
+	  					<td>카테고리</td>
+	  				</tr>
+	  				<tr>
+	  					<td>
+								<%
+									for(HashMap<String, Object> m : categoryList) {
+								%>
+										<h5><a href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=m.get("categoryName")%>"><%=m.get("categoryName")%> <span class="badge badge-pill badge-warning"><%=m.get("cnt")%></span></a></h5>
+								<%		
+									}
+								%>
+						</td>
+					</tr>
+				</table>
 	  		</div>
 	 		<div class="col-sm-10">
-	 			<table class="table table-bordered text-center table-striped table-dark">
-					<thead class="thead-dark">
+	 			<table class="table table-bordered text-center table-striped">
+					<thead class="bg-warning">
 						<tr>
 							<th>카테고리</th>
 							<th>제목</th>
@@ -131,11 +135,11 @@
 							if(currentPage > 1) { // 현재 페이지가 1이면 이전페이지가 나오면 안됨
 								if(categoryName == null) {
 						%>
-									<li class="page-item"><a class="page-link float-left badge badge-pill badge-secondary" href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage-1%>">이전</a>
+									<li class="page-item"><a class="page-link float-left badge badge-pill badge-warning" href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage-1%>">이전</a>
 						<%
 								} else {
 						%>
-									<li class="page-item"><a class="page-link float-left badge badge-pill badge-secondary" href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage-1%>&categoryName=<%=categoryName%>">이전</a>
+									<li class="page-item"><a class="page-link float-left badge badge-pill badge-warning" href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage-1%>&categoryName=<%=categoryName%>">이전</a>
 						<%
 								}			
 							}
@@ -155,11 +159,11 @@
 						 	if(currentPage < lastPage) {
 						 		if(categoryName == null) {
 						 %>		
-						 			<li class="page-item"><a class="page-link float-left badge badge-pill badge-secondary" href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
+						 			<li class="page-item"><a class="page-link float-left badge badge-pill badge-warning" href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
 						 <%
 						 		} else {
 						 %>			
-						 			<li class="page-item"><a class="page-link float-left badge badge-pill badge-secondary" href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage+1%>&categoryName=<%=categoryName%>">다음</a></li>
+						 			<li class="page-item"><a class="page-link float-left badge badge-pill badge-warning" href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage+1%>&categoryName=<%=categoryName%>">다음</a></li>
 						 				
 						 <%			
 						 		}	
@@ -169,7 +173,7 @@
 				</div>
 			</div>
 			<div class="col-sm-5">
-				<a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp?boardNo=<%=board.getBoardNo()%>" class="btn btn-primary float-right">글쓰기</a>
+				<a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp?boardNo=<%=board.getBoardNo()%>" class="btn btn-warning float-right">글쓰기</a>
 			</div>
 		</div>
 	</div>	

@@ -36,15 +36,16 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="container bg-dark">
+	<div class="container">
 		<jsp:include page="/inc/upMenu.jsp"></jsp:include>
+		<br>
 		<h1>
-			<div class="text-center text-white">PDF 자료실</div>
+			<div class="text-center">PDF 자료실</div>
 		</h1>
-		<div class="float-right">
-			<span class="text-white"><%=currentPage%> / <%=lastPage%> Page</span>
+		<div class="float-right badge badge-pill badge-warning">
+			<%=currentPage%> / <%=lastPage%> Page
 		</div>
-		<table class="table table-bordered text-center table-striped table-dark">
+		<table class="table table-bordered text-center table-striped">
 				<tr>
 					<td>자료명</td>
 					<td>작성날짜</td>
@@ -54,39 +55,35 @@
 			%>
 					<tr>
 						<td>
-							<a class="text-white" href="<%=request.getContextPath()%>/pdf/selectPdfOne.jsp?pdfNo=<%=p.getPdfNo()%>"><%=p.getPdfName()%></a>
+							<a href="<%=request.getContextPath()%>/pdf/selectPdfOne.jsp?pdfNo=<%=p.getPdfNo()%>"><%=p.getPdfName()%></a>
 						</td>
 						<td><%=p.getCreateDate()%></td>
 					</tr>
 			<%		
 				}
 			%>
-			<tr class="bg-dark table-borderless">
+			<tr class="table-borderless">
 				<td colspan="2">
-					<div class="row">
-						<div class="col-sm-6">
-							<ul class="pagination float-right">
-								<%
-									if(currentPage > 1) {
-								%>
-										<li class="page-item float-right"><a class="page-link float-left badge badge-secondary float-right" href="<%=request.getContextPath()%>/pdf/pdfList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
-								<%
-									}
-									if(currentPage < lastPage) {
-								%>
-										<li class="page-item float-right"><a class="page-link float-left badge badge-secondary float-right" href="<%=request.getContextPath()%>/pdf/pdfList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
-								<%
-									}
-								%>
-							</ul>
-						</div>
-						<div class="col-sm-6">
-							<a class= "btn btn-primary float-right" href="<%=request.getContextPath()%>/pdf/insertPdfForm.jsp">글작성</a>
-						</div>
-					</div>
+					<ul class="pagination float-right">
+						<%
+							if(currentPage > 1) {
+						%>
+								<li class="page-item float-right"><a class="page-link float-left badge badge-warning float-right" href="<%=request.getContextPath()%>/pdf/pdfList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
+						<%
+							}
+							if(currentPage < lastPage) {
+						%>
+								<li class="page-item float-right"><a class="page-link float-left badge badge-warning float-right" href="<%=request.getContextPath()%>/pdf/pdfList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
+						<%
+							}
+						%>
+					</ul>
 				</td>
 			</tr>
 		</table>
+		<div>
+			<a class= "btn btn-warning float-right" href="<%=request.getContextPath()%>/pdf/insertPdfForm.jsp">글작성</a>
+		</div>
 	</div>
 </body>
 </html>
